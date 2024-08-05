@@ -33,10 +33,10 @@ func (a *App) startup(ctx context.Context) {
 func (a *App) domReady(ctx context.Context) {
 	a.ctx = ctx
 
-	usr, err := user.Current()
-	if err != nil {
-		log.Fatal(err)
-	}
+	// usr, err := user.Current()
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 
 	// runtime.EventsOn(ctx, "increment", func(optionalData ...interface{}) {
 	// 	go handler.ScanForAudio(ctx, []string{usr.HomeDir}, func(file helpers.Audio) {
