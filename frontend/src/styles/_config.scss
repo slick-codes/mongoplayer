@@ -1,11 +1,19 @@
-@import url('https://fonts.cdnfonts.com/css/poppins');
+@import url(font.scss);
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: .78rem;
+  // font-size: .78rem;
   font-family: poppins;
+  font-weight: regular;
+  -webkit-user-select: none;
+  /* For Safari */
+  -moz-user-select: none;
+  /* For Firefox */
+  -ms-user-select: none;
+  /* For Internet Explorer/Edge */
+  user-select: none;
 }
 
 
