@@ -12,6 +12,7 @@ import Heart from "./../icons/Heart"
 import "./../../styles/nav.scss"
 import Playing from "../icons/Playing";
 import Settings from "../icons/Settings";
+import Add from "../icons/Add";
 
 
 interface Directory {
@@ -82,8 +83,13 @@ export default function() {
                                             </>
                                         )
                                     })}
-                                    <li>
-                                        <button onClick={openFolder}>Add</button>
+                                    <li title={!navIsOpen ? "Add Folder" : undefined}>
+                                        <span>
+                                            <Add />
+                                        </span>
+                                        <span>
+                                            <button onClick={openFolder}>Add</button>
+                                        </span>
                                     </li>
                                 </div>
                             </DropDown>
@@ -102,7 +108,14 @@ export default function() {
                                             </>
                                         )
                                     })}
-                                    <li><button>Create</button></li>
+                                    <li>
+                                        <span>
+                                            <Add />
+                                        </span>
+                                        <span>
+                                            <button>Create</button>
+                                        </span>
+                                    </li>
                                 </div>
                             </DropDown>
                         </section>

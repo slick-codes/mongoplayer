@@ -51,17 +51,20 @@
       span:first-child {
         transform-origin: left;
         transform: scale(1.5);
+        display: flex;
+        flex-flow: column;
+        // align-items: center;
       }
 
 
       button {
-        width: 8.5em;
+        width: 6em;
         color: white;
         margin-top: .5em;
         border-radius: .3em;
         border: dotted 1px white;
         background: transparent;
-        padding: .4em 0;
+        padding: .2em 0;
         cursor: pointer;
       }
 
@@ -94,10 +97,25 @@
 
   .nav__toggler {
     display: flex;
+    justify-content: center;
+    align-items: center;
     // background: purple;
     // transform-origin: center;
-    // justify-content: center;
-    // align-items: center;
+    //
+
+    >div {
+      transform-origin: center;
+    }
+  }
+
+  .nav__playlist-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span:first-child {
+      padding-right: 0;
+    }
   }
 
   button {
@@ -105,7 +123,8 @@
   }
 
   li {
-    padding-left: 0;
+    padding-left: 0 !important;
+    padding: .8em 0;
     justify-content: center;
 
     span:first-child {
@@ -123,8 +142,12 @@
 
   .collaper__name {
     padding: 1.3em 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    >* {
+    >span:first-child {
+      padding-right: 0;
       display: none;
     }
   }
@@ -136,8 +159,10 @@
     justify-content: center;
 
     li {
+      padding: .8em 0;
       display: flex;
       justify-content: center;
+      align-items: center;
 
       >span:first-child {
         transform: scale(1.4);
@@ -155,267 +180,4 @@
     }
   }
 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 400;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-Regular.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 400;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-Regular.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: italic;
-  font-weight: 400;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-Italic.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: italic;
-  font-weight: 400;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-Italic.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 250;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-Thin.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 250;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-Thin.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: italic;
-  font-weight: 250;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-ThinItalic.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: italic;
-  font-weight: 250;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-ThinItalic.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 275;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-ExtraLight.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 275;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-ExtraLight.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: italic;
-  font-weight: 275;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-ExtraLightItalic.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: italic;
-  font-weight: 275;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-ExtraLightItalic.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 300;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-Light.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 300;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-Light.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: italic;
-  font-weight: 300;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-LightItalic.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: italic;
-  font-weight: 300;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-LightItalic.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 500;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-Medium.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 500;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-Medium.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: italic;
-  font-weight: 500;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-MediumItalic.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: italic;
-  font-weight: 500;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-MediumItalic.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 600;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-SemiBold.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 600;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-SemiBold.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: italic;
-  font-weight: 600;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-SemiBoldItalic.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: italic;
-  font-weight: 600;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-SemiBoldItalic.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 700;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-Bold.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 700;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-Bold.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: italic;
-  font-weight: 700;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-BoldItalic.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: italic;
-  font-weight: 700;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-BoldItalic.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 800;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-ExtraBold.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 800;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-ExtraBold.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: italic;
-  font-weight: 800;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-ExtraBoldItalic.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: italic;
-  font-weight: 800;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-ExtraBoldItalic.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 900;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-Black.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: normal;
-  font-weight: 900;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-Black.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: italic;
-  font-weight: 900;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-BlackItalic.woff) format('woff')
-}
-
-@font-face {
-  font-family: poppins;
-  font-style: italic;
-  font-weight: 900;
-  src: local('Poppins'), url(https://fonts.cdnfonts.com/s/16009/Poppins-BlackItalic.woff) format('woff')
 }
