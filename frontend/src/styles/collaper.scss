@@ -10,6 +10,7 @@ ul {
     cursor: pointer;
     padding: .5em 0;
     width: 100%;
+    font-size: .85rem;
     font-weight: bolder;
     display: flex;
     justify-content: space-between;
@@ -30,5 +31,4 @@ ul {
   &__content {
     padding-top: .5em;
   }
-
 }
