@@ -40,7 +40,7 @@ export default function() {
     ]
 
     // toggle navigation handlers
-    const [navIsOpen, setNavState] = React.useState(true)
+    const [navIsOpen, setNavState] = React.useState(false)
     const toggleNavState = () => setNavState(state => !state)
 
     const openFolder = function() {
@@ -68,7 +68,7 @@ export default function() {
                         </section>
 
                         <section className="nav__directory_container">
-                            <DropDown open={true} text="Directories">
+                            <DropDown open={!navIsOpen} text="Directories">
                                 <div className="nav__dropdown-conatiner">
                                     {directories.map((directory, key) => {
                                         return (
