@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { RangeCallback } from "../../store/types"
 
+import "./../../styles/range.scss"
 
 interface Options {
     position: number,
