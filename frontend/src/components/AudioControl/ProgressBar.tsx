@@ -1,46 +1,41 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { RangeCallback } from "../../store/types"
 
 
-
-
 interface Options {
-    width: number,
+    position: number,
     callback: RangeCallback
 }
 
-
 const ProgressBar: React.FC<Options> = function(props) {
 
-    const [width, updateBarWidth] = React.useState(props.width)
+    const [position, updateBarWidth] = React.useState({ position: props.position, positionInPercentage: 0 })
     const element: any = React.useRef(null)
 
     function rangeUpdater(event: MouseEvent | React.MouseEvent<HTMLDivElement>) {
         // prevent propagation (event bubbling)
         event.stopPropagation()
 
-        updateBarWidth((_bar: any): any => {
-            const mousePosition = event?.clientX
-            // check if offsetX is an integer
+        const elementPosition = element.current.getBoundingClientRect()
+        // get the position of the mouse relative to the position of the range element
+        let mousePosition = event?.clientX - elementPosition.left
+        // get the width of the range element
+        const elementWidth = element.current.clientWidth
+        // convet the vaolue of the offset to percentage
+        let percentage = (mousePosition) / (elementWidth) * 100
 
-            const elementWidth = element.current.clientWidth
-            const elementPosition = element.current.getBoundingClientRect()
+        // construct the range obj and also fix cap it to a specific value range
+        const data = {
+            position: Math.min(elementWidth, Math.max(0, mousePosition)),
+            positionInPercentage: Math.min(100, Math.max(0, percentage))
+        }
 
-            // convet the vaolue of the offset to persentage
-            let persentage: number = (mousePosition - elementPosition.left) / (elementWidth) * 100
-            if (persentage <= 0) return 0
+        // update state
+        updateBarWidth(data)
+        // execute callback 
+        if (props.callback instanceof Function)
+            return props.callback(data)
 
-            // ensure the valueInPasentage
-            persentage = persentage < 0 ? 0 : persentage
-            persentage = persentage > 100 ? 100 : persentage
-
-            //setup callback if it exsit 
-            if (typeof props.callback === "function")
-                props.callback({ value: mousePosition, valueInPasentage: persentage })
-
-            // update volume with this value
-            return persentage
-        })
     }
 
     function rangeEventHandler(_event: React.MouseEvent<HTMLDivElement> | MouseEvent) {
@@ -49,11 +44,10 @@ const ProgressBar: React.FC<Options> = function(props) {
     }
 
     return (
-
         <div ref={element} className="progressBar" onClick={rangeUpdater} onMouseDown={rangeEventHandler}>
             <div className="bar">
                 <div className="bar__container">
-                    <div style={{ width: `${width}%` }}></div>
+                    <div style={{ width: `${position.positionInPercentage}%` }}></div>
                     <div className="bar__dragabledot"></div>
                 </div>
             </div>
