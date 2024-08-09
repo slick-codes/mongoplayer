@@ -3,13 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"log"
-	handler "mongoplayer/cmd"
-	"mongoplayer/cmd/helpers"
 	"mongoplayer/cmd/server"
-	"os/user"
-
-	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
 type App struct {
