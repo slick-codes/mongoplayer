@@ -1,5 +1,6 @@
 
 
+import React from "react"
 import { RangeHandler } from "../../store/types"
 import AudioLeft from "../icons/AudioLeft"
 import AudioRight from "../icons/AudioRight"
@@ -7,19 +8,34 @@ import HeartFill from "../icons/HeartFil"
 import Play from "../icons/Play"
 import RepeatOne from "../icons/RepeatOne"
 import Repeat from "../icons/Shuffle"
+import VolumeHigh from "../icons/VolumeHigh"
 import VolumeLow from "../icons/VolumeLow"
+import VolumeMute from "../icons/VolumeMute"
 import "./../../styles/control.scss"
 import ProgressBar from "./ProgressBar"
+import VolumeEmpty from "../icons/VolumeEmpty"
 
 function Control() {
 
+    const [range, setRange] = React.useState({ volume: 0, progress: 0 })
+    const [isMute, setMuteState] = React.useState(true)
+
+    const toggleMuteState = function() {
+        setMuteState(state => !state)
+    }
 
     const volumeHandler = function(data: RangeHandler) {
-        console.log(data)
+        if (isMute) setMuteState(false)
+        setRange(rage => ({ ...rage, volume: data.valueInPasentage }))
     }
 
     const progressBarHandler = function(data: RangeHandler) {
-        console.log(data)
+        setRange(rage => ({ ...rage, progress: rage.progress + data.valueInPasentage }))
+    }
+
+
+    const volumeManager = function() {
+
     }
 
 
@@ -71,8 +87,12 @@ function Control() {
                     </div>
                     <div className="volume">
                         <div>
-                            <button>
-                                <VolumeLow />
+                            <button onClick={toggleMuteState}>
+                                {
+                                    isMute ? <VolumeMute /> :
+                                        range.volume >= 80 ? <VolumeHigh /> :
+                                            range.volume > 10 ? <VolumeLow /> : <VolumeEmpty />
+                                }
                             </button>
                         </div>
                         <div>
