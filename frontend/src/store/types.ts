@@ -4,8 +4,8 @@
 
 
 export interface RangeHandler {
-    value: number,
-    valueInPasentage: number,
+    position: number,
+    positionInPercentage: number,
 }
 
 export type RangeCallback = (data: RangeHandler) => void
