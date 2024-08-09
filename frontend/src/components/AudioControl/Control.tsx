@@ -18,26 +18,27 @@ import VolumeEmpty from "../icons/VolumeEmpty"
 function Control() {
 
     const [range, setRange] = React.useState({ volume: 0, progress: 0 })
-    const [isMute, setMuteState] = React.useState(true)
+
+    const [audioData, setAudioData] = React.useState({
+        isMute: false,
+        paused: false,
+        shuffle: true,
+        repeatStyle: "none"
+    })
 
     const toggleMuteState = function() {
-        setMuteState(state => !state)
+        setAudioData(state => ({ ...state, isMute: !state.isMute }))
     }
 
     const volumeHandler = function(data: RangeHandler) {
-        if (isMute) setMuteState(false)
-        setRange(rage => ({ ...rage, volume: data.valueInPasentage }))
+        // unmute audio if it is muted 
+        if (audioData.isMute) toggleMuteState()
+        setRange(rg => ({ ...rg, volume: data.positionInPercentage }))
     }
 
     const progressBarHandler = function(data: RangeHandler) {
-        setRange(rage => ({ ...rage, progress: rage.progress + data.valueInPasentage }))
+        setRange(rg => ({ ...rg, progress: data.positionInPercentage }))
     }
-
-
-    const volumeManager = function() {
-
-    }
-
 
     return (<>
         <section className="control">
@@ -89,19 +90,19 @@ function Control() {
                         <div>
                             <button onClick={toggleMuteState}>
                                 {
-                                    isMute ? <VolumeMute /> :
+                                    audioData.isMute ? <VolumeMute /> :
                                         range.volume >= 80 ? <VolumeHigh /> :
                                             range.volume > 10 ? <VolumeLow /> : <VolumeEmpty />
                                 }
                             </button>
                         </div>
                         <div>
-                            <ProgressBar width={20} callback={volumeHandler} />
+                            <ProgressBar position={20} callback={volumeHandler} />
                         </div>
                     </div>
                 </section>
             </div>
-            <ProgressBar width={20} callback={progressBarHandler} />
+            <ProgressBar position={20} callback={progressBarHandler} />
 
         </section>
     </>)
