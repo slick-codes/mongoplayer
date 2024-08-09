@@ -20,8 +20,11 @@ func main() {
 	// Create application with options
 	err := wails.Run(&options.App{
 		Title:      "mongoplayer",
-		Width:      1024,
-		Height:     768,
+		Width:      990,
+		Height:     600,
+		MinWidth:   990,
+		Frameless:  false,
+		MinHeight:  600,
 		Fullscreen: false,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
