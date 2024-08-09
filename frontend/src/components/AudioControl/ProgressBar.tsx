@@ -12,45 +12,45 @@ interface Options {
 
 const ProgressBar: React.FC<Options> = function(props) {
 
-
     const [width, updateBarWidth] = React.useState(props.width)
+    const element: any = React.useRef(null)
 
-    function updateBar() {
-
-    }
-    function updateProgressBar(event: any) {
+    function rangeUpdater(event: MouseEvent | React.MouseEvent<HTMLDivElement>) {
+        // prevent propagation (event bubbling)
+        event.stopPropagation()
 
         updateBarWidth((_bar: any): any => {
-            const offsetX = event?.offsetX || event?.nativeEvent?.offsetX
-
+            const mousePosition = event?.clientX
             // check if offsetX is an integer
-            if (!offsetX) return 0
 
-            const elemWidth = event.target.offsetWidth
+            const elementWidth = element.current.clientWidth
+            const elementPosition = element.current.getBoundingClientRect()
+
             // convet the vaolue of the offset to persentage
-            let valueInPasentage: number = (offsetX) / (elemWidth) * 100
-            if (valueInPasentage <= 0) return 0
+            let persentage: number = (mousePosition - elementPosition.left) / (elementWidth) * 100
+            if (persentage <= 0) return 0
+
+            // ensure the valueInPasentage
+            persentage = persentage < 0 ? 0 : persentage
+            persentage = persentage > 100 ? 100 : persentage
 
             //setup callback if it exsit 
             if (typeof props.callback === "function")
-                props.callback({ value: offsetX, valueInPasentage })
+                props.callback({ value: mousePosition, valueInPasentage: persentage })
 
             // update volume with this value
-            return valueInPasentage
+            return persentage
         })
+    }
 
-        // setup mousemove 
-        event.target.onmousemove = updateProgressBar
-
-        // Prvent the mousemove from working when user unclicks the mouse 
-        event.target.onmouseup = (e: any) => e.target.onmousemove = null
-        event.target.onmouseover = (e: any) => e.target.onmousemove = null
-
+    function rangeEventHandler(_event: React.MouseEvent<HTMLDivElement> | MouseEvent) {
+        document.onmousemove = rangeUpdater
+        document.onmouseup = () => { document.onmousemove = null }
     }
 
     return (
 
-        <div className="progressBar" onMouseDown={updateProgressBar}>
+        <div ref={element} className="progressBar" onClick={rangeUpdater} onMouseDown={rangeEventHandler}>
             <div className="bar">
                 <div className="bar__container">
                     <div style={{ width: `${width}%` }}></div>
