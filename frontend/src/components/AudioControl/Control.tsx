@@ -1,5 +1,3 @@
-
-
 import React from "react"
 import { RangeHandler } from "../../store/types"
 import AudioLeft from "../icons/AudioLeft"
