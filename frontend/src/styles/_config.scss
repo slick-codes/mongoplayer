@@ -1,10 +1,17 @@
 @import url(font.scss);
 
+$primary-color: #242632;
+$secondary-color: #fff;
+$asent-color: purple;
+$primary-font: green;
+
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  // font-size: .78rem;
+  font-size: .85rem;
   font-family: poppins;
   font-weight: regular;
   -webkit-user-select: none;
@@ -14,13 +21,21 @@
   -ms-user-select: none;
   /* For Internet Explorer/Edge */
   user-select: none;
+  scrollbar-width: none;
+
+  // color: $primary-color;
+
+  // svg {
+  //   display: flex;
+  //   height: 100%;
+  //   justify-content: center;
+  //   align-items: center;
+  // }
+
+  // svg {
+  //   path {
+  //     fill: $primary-color;
+  //     stroke: $primary-color;
+  //   }
+  // }
 }
-
-
-
-
-
-$primary-color: #242632;
-$secondary-color: #fff;
-$asent-color: purple;
-$primary-font: green;
