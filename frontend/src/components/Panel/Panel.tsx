@@ -1,7 +1,7 @@
 
-
-import Control from "../AudioControl/Control"
+import Control from "./Control/Control"
 import "./../../styles/panel.scss"
+import List from "./AudiosPanel/List"
 
 
 function Panel() {
@@ -10,7 +10,7 @@ function Panel() {
             <section className="panel">
                 <div className="panel__container">
                     <section>Header</section>
-                    <section>List</section>
+                    <List />
                     <Control />
                 </div>
             </section>
