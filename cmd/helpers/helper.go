@@ -47,5 +47,4 @@ func Ternary(condition bool, block1 interface{}, block2 interface{}) string {
 	} else {
 		return b2.String()
 	}
-
 }

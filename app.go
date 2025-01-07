@@ -3,7 +3,14 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
+	handler "mongoplayer/cmd"
+	"mongoplayer/cmd/helpers"
 	"mongoplayer/cmd/server"
+	"os/user"
+	"time"
+
+	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
 type App struct {
@@ -27,16 +34,19 @@ func (a *App) startup(ctx context.Context) {
 func (a *App) domReady(ctx context.Context) {
 	a.ctx = ctx
 
-	// usr, err := user.Current()
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
+	usr, err := user.Current()
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	// runtime.EventsOn(ctx, "increment", func(optionalData ...interface{}) {
-	// 	go handler.ScanForAudio(ctx, []string{usr.HomeDir}, func(file helpers.Audio) {
-	// 		runtime.EventsEmit(ctx, "get-all-audios", file)
-	// 	})
-	// })
+	runtime.EventsOn(ctx, "increment", func(optionalData ...interface{}) {
+handler.ScanForAudio(ctx, []string{usr.HomeDir}, func(file helpers.Audio) {
+			go func(){
+				time.Sleep(time.Second * 1) // simulate a delay to simulate a network request
+				runtime.EventsEmit(ctx, "get-audios", file)
+			}()
+		})
+	})
 }
 
 func (a *App) Log(message string) string {

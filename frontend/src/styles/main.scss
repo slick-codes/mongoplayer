@@ -13,6 +13,8 @@ main.main {
     // style the Nav and the Panel
     // width: 100%;
     height: inherit;
+    scroll-behavior: smooth;
+    will-change: scroll-position;
   }
 
 }

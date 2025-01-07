@@ -51,16 +51,6 @@ func (server *Server) Run(length int8) {
 		port = server.GeneratePort()
 	}
 
-	// trusted IP/Domain
-	// trustedProxies := []string{
-	// 	"127.0.0.1",
-	// }
-	//
-	// // manage cors
-	// if err := app.SetTrustedProxies(trustedProxies); err != nil {
-	// 	log.Fatal(err)
-	// }
-
 	// Endpoint that manages files retrival
 	app.GET("/", func(ctx *gin.Context) {
 		path := ctx.Query("path")
@@ -72,7 +62,9 @@ func (server *Server) Run(length int8) {
 		ctx.Header("Content-Disposition", fmt.Sprintf("attachment; filename=%s", filepath.Base(path)))
 		ctx.Header("Content-Length", fmt.Sprintf("%d", 5645))
 		// Send Response
-		ctx.File(path)
+		go func(){
+			ctx.File(path)
+		}()
 	})
 
 	err := app.Run(":" + port)

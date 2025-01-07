@@ -15,9 +15,9 @@ import (
 
 // setup a callback type
 type Callback func(helpers.Audio)
-
 // localize file info ( this allows me to assign a method to FileInfo)
 type FileInfo helpers.FileInfo
+
 
 func (file *FileInfo) createAudio() (helpers.Audio, error) {
 
@@ -56,11 +56,6 @@ func (file *FileInfo) createAudio() (helpers.Audio, error) {
 func ScanForAudio(ctx context.Context, directories []string, callback Callback) bool {
 
 	for _, directory := range directories {
-		//
-		// usr, err := user.Current()
-		// if err != nil {
-		// 	log.Fatal(err)
-		// }
 
 		filePaths, err1 := os.ReadDir(directory)
 		//handle error's with certail directories
@@ -113,7 +108,7 @@ func ScanForAudio(ctx context.Context, directories []string, callback Callback) 
 				continue
 			}
 
-			callback(audio)
+			 callback(audio)
 		}
 
 	}

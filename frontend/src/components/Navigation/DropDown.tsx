@@ -7,7 +7,7 @@ import "./../../styles/collaper.scss"
 
 
 interface DropDownProps {
-    open: Boolean;
+   open: Boolean;
     text: String;
     children: React.ReactNode;
 }

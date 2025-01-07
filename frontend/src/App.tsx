@@ -1,7 +1,6 @@
-import Main from "./components/Main"
+import Main from './components/Main'
 
 function App() {
-
     return (
         <>
             <div className="mongoplayer-main-container">
@@ -10,6 +9,5 @@ function App() {
         </>
     )
 }
-
 
 export default App

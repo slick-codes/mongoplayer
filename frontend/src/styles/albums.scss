@@ -1,0 +1,70 @@
+.albums{
+  padding:0px 1em;
+  padding-bottom:2em;
+  position:relative;
+  height:100%;
+  justify-content:stretch;
+  flex-flow:column;
+  overflow-y:auto;
+  will-change: visible;
+
+  
+      &::-webkit-scrollbar {
+        width: .5em;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 50em;
+        scrollbar-width: 1em;
+        background: #999;
+      }
+
+  &__container{
+    display:flex;
+    flex-wrap: wrap;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    gap:1em;
+    padding:1em 1em;
+    padding-top:0;
+    justify-content: flex-start;
+
+  }
+  &__card{
+    max-width:19em;
+    width:100%;
+    // height:15em;
+
+    & .card{
+      overflow:hidden;
+      border-radius:.6em;
+      display:grid;
+      background-size:cover;
+      box-shadow:-6px 5px 9px 3px #0000001f;
+      gap:.1em;
+      height:14em;
+      will-change: scroll-position;
+
+      > img {
+        width:100%;
+      }
+
+      // > div{
+      //   height:100%;
+      //   width:100%;
+      //   display:flex;
+      //   justify-content:center;
+      //   background-size:cover;
+      //   align-items:center;
+      // }
+    }
+
+  }
+  span{
+    padding-top:1em ;
+    text-align:center;
+    display:block;
+  }
+}

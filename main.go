@@ -7,15 +7,18 @@ import (
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
 	"github.com/wailsapp/wails/v2/pkg/options/linux"
+
 	// "github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
 //go:embed all:frontend/dist
 var assets embed.FS
 
+
 func main() {
 	// Create an instance of the app structure
 	app := NewApp()
+
 
 	// Create application with options
 	err := wails.Run(&options.App{

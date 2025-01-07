@@ -1,0 +1,92 @@
+
+
+
+.header{
+  display:flex;
+  align-items:center;
+  padding:1em 1.2em;
+  background-size:cover;
+  background-position:center center;
+  background-blend-mode:multiply;
+  position:relative;
+
+  &:before{
+    content:"";
+    position:absolute;
+    height:inherit;
+    width:inherit;
+    display:block;
+    left:0;
+      background: linear-gradient(360deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.96) 22%, rgba(255, 255, 255, 0) 100%);
+    right:0;
+  }
+
+  &_image_panel {
+    height:12em;
+    width:14em;
+    z-index:33;
+    border-radius:.3em;
+    background-position:center center;
+    background-size:cover;
+  }
+
+  .content__container {
+    z-index:3;
+    padding:0px 1em;
+    padding-top:2em;
+  }
+
+  &__text{
+    line-height:2.2em;
+    padding-bottom:.5em;
+    font-weight:normal;
+
+    h1{
+      font-size:2.3rem;
+      font-weight:500;
+    }
+
+    h4{
+      font-size:1.2rem;
+      font-weight:normal;
+    }
+  }
+
+  &__cta{
+    padding-top:1em;
+    gap:1em;
+    display:flex;
+
+    span{
+      display:block;
+      background:black;
+      width:.1em;
+    }
+
+    button{
+      display:flex;
+      align-items:center;
+      gap:.5em;
+      color:black;
+      border:none;
+      cursor:pointer;
+      background-color:transparent;
+      padding:.3em .7em;
+      border-radius:.3em;
+      font-weight:500;
+
+       path {
+        stroke:black;
+      }
+
+
+      &:active {
+        color:red;
+
+           path{
+            stroke: red;
+          }
+      }
+    }
+  }
+}
